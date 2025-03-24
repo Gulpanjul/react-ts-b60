@@ -1,6 +1,8 @@
 interface User {
 	id: number;
-	name: string;
+	username: string;
+	phone: string;
+	email: string;
 }
 
 interface UserListProps {
@@ -9,9 +11,13 @@ interface UserListProps {
 
 export default function UserList({ users }: UserListProps) {
 	return (
-		<ul>
+		<ul id="user-list">
 			{users.map((user) => (
-				<li>{user.name}</li>
+				<li>
+					<h2>{user.username}</h2>
+					<p>phone: {user.phone}</p>
+					<p>email: {user.email}</p>
+				</li>
 			))}
 		</ul>
 	);

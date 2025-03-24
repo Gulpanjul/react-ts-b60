@@ -1,37 +1,33 @@
-import JudulHalaman from "./components/MyTitle";
+import { useEffect, useState } from "react";
 import "./assets/styles/App.css";
 import UserList from "./components/UserList";
-import UserListDummy from "./utils/DummyList";
+
+interface User {
+	id: number;
+	username: string;
+	phone: string;
+	email: string;
+}
 
 // component app
 function App() {
+	const [users, setUsers] = useState<User[]>([]);
+
+	useEffect(() => {
+		fetch("https://jsonplaceholder.typicode.com/users")
+			.then((response) => response.json())
+			.then((data) =>
+				setTimeout(() => {
+					setUsers(data);
+				}, 3000)
+			);
+	}, []);
+
 	return (
-		<div>
-			<JudulHalaman title={"Belajar Typescript"} />
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam,
-				cupiditate voluptatum doloribus et numquam sunt, ab explicabo est, earum
-				odio iure. Illum praesentium repudiandae provident.
-			</p>
-
-			<JudulHalaman title="Belajar React" />
-			<a href="" target="_blank" rel="noopener noreferrer">
-				contoh link
-			</a>
-			<MyButton />
-
-      <UserList users={UserListDummy}/>
-		</div>
-	);
-}
-
-// component tombol/button
-function MyButton() {
-	return (
-		<div style={{ marginTop: "20px" }}>
-			<button type="button" onClick={() => alert("test button")}>
-				Tombol Saya
-			</button>
+		<div style={{ display: "flex", justifyContent: "center" }}>
+			{/* <MyCounter /> */}
+			{/* <MyForm /> */}
+			{users.length > 0 ? <UserList users={users} /> : <p>Loading...</p>}
 		</div>
 	);
 }
