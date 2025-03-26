@@ -35,14 +35,15 @@ function MyCounter() {
 			id="my-counter"
 			style={{
 				backgroundColor: background,
-				height: "80vh",
-				width: "100%",
+				height: "30vh",
+				width: "50%",
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
 				flexDirection: "column",
 			}}
 		>
+			<h1>My Counter</h1>
 			<h1>{suhu}</h1>
 			<button onClick={tambah}>Tambah</button>
 			<br />

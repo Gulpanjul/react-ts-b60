@@ -1,34 +1,15 @@
-import { useEffect, useState } from "react";
+import { RouterProvider } from "react-router-dom";
 import "./assets/styles/App.css";
-import UserList from "./components/UserList";
-
-interface User {
-	id: number;
-	username: string;
-	phone: string;
-	email: string;
-}
+import { AuthProvider } from "./contexts/auth";
+// import Home from "./routes/Home";
+import router from "./routes";
 
 // component app
 function App() {
-	const [users, setUsers] = useState<User[]>([]);
-
-	useEffect(() => {
-		fetch("https://jsonplaceholder.typicode.com/users")
-			.then((response) => response.json())
-			.then((data) =>
-				setTimeout(() => {
-					setUsers(data);
-				}, 3000)
-			);
-	}, []);
-
 	return (
-		<div style={{ display: "flex", justifyContent: "center" }}>
-			{/* <MyCounter /> */}
-			{/* <MyForm /> */}
-			{users.length > 0 ? <UserList users={users} /> : <p>Loading...</p>}
-		</div>
+		<AuthProvider>
+			<RouterProvider router={router}/>
+		</AuthProvider>
 	);
 }
 

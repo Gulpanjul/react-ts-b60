@@ -5,6 +5,8 @@
 	width: 50%;
 	margin: 100px 0;
 	gap: 10px;
+	background-color: lightblue;
+	padding: 20px;
 }
 
 .form-input {

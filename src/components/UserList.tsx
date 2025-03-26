@@ -1,10 +1,6 @@
-interface User {
-	id: number;
-	username: string;
-	phone: string;
-	email: string;
-}
+import { User } from "../types/user";
 
+// interface untuk array user list
 interface UserListProps {
 	users: User[];
 }

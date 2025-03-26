@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../assets/styles/form-style.css";
+import { AuthContext } from "../contexts/auth";
 
 interface MyFormState {
 	username: string;
-	age: number;
+	email: string;
+	phone: string;
 }
 
 function MyForm() {
+	const { user, setUser } = useContext(AuthContext);
 	const [formState, setFormState] = useState<MyFormState>({
 		username: "username not found",
-		age: 0,
+		email: "",
+		phone: "",
 	});
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +28,7 @@ function MyForm() {
 		event.preventDefault();
 
 		console.log(`Halo username saya: ${formState.username}`);
-		console.log(`Saya berumur ${formState.age} tahun`);
+		setUser(formState); // object yang berisi data form : username, email, phone
 	};
 
 	return (
@@ -39,11 +43,19 @@ function MyForm() {
 			/>
 			<input
 				className="form-input"
-				type="number"
-				name="age"
-				id="age"
+				type="text"
+				name="email"
+				id="email"
 				onChange={handleChange}
-				placeholder="masukkan umur..."
+				placeholder="masukkan email..."
+			/>
+			<input
+				className="form-input"
+				type="tel"
+				name="phone"
+				id="phone"
+				onChange={handleChange}
+				placeholder="masukkan nomor ponsel..."
 			/>
 			<button className="form-button" type="submit">
 				Submit
