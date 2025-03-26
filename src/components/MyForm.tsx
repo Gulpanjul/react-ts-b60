@@ -32,9 +32,10 @@ function MyForm() {
 	};
 
 	return (
-		<form className="my-form" onSubmit={handleSubmit}>
+		<form className="my-form bg-amber-200" onSubmit={handleSubmit}>
+			<h1>My Form</h1>
 			<input
-				className="form-input"
+				className="w-full border-2 p-1 rounded-sm border-gray-500 text-lg"
 				type="text"
 				name="username"
 				id="username"
@@ -42,7 +43,7 @@ function MyForm() {
 				placeholder="masukkan username..."
 			/>
 			<input
-				className="form-input"
+				className="w-full border-2 p-1 rounded-sm border-gray-500 text-lg"
 				type="text"
 				name="email"
 				id="email"
@@ -50,14 +51,14 @@ function MyForm() {
 				placeholder="masukkan email..."
 			/>
 			<input
-				className="form-input"
+				className="w-full border-2 p-1 rounded-sm border-gray-500 text-lg"
 				type="tel"
 				name="phone"
 				id="phone"
 				onChange={handleChange}
 				placeholder="masukkan nomor ponsel..."
 			/>
-			<button className="form-button" type="submit">
+			<button className="text-white bg-green-600 px-10 py-2 rounded-sm" type="submit">
 				Submit
 			</button>
 		</form>

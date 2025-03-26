@@ -5,21 +5,5 @@
 	width: 50%;
 	margin: 100px 0;
 	gap: 10px;
-	background-color: lightblue;
 	padding: 20px;
-}
-
-.form-input {
-	padding: 5px;
-	width: 100%;
-	font-size: 14px;
-	border: 2px solid blue;
-	border-radius: 5px;
-}
-
-.form-button {
-	background-color: blue;
-	color: white;
-	padding: 4px 30px;
-	border-radius: 5px;
 }

@@ -1,34 +1,44 @@
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
+import { useSuhuCounterStore } from "@/stores/suhu";
 
 function MyCounter() {
-	const [suhu, setSuhu] = useState<number>(27);
-	const [background, setBackground] = useState<string>("mint");
+	// const [suhu, setSuhu] = useState<number>(27);
+	const {
+		counter,
+		increment,
+		decrement,
+		reset,
+		incrementByAmount,
+		decrementByAmount,
+	} = useSuhuCounterStore((state) => state);
+	const [background, setBackground] = useState<string>("#71b4ff");
 
-	useEffect(() => {
-		if (suhu > 25) {
-			setBackground("yellow");
-		} else if (suhu < 20) {
-			setBackground("red");
-		} else {
-			setBackground("mint");
-		}
-	}, [suhu]);
+	// useEffect(() => {
+	// 	if (suhu > 25) {
+	// 		setBackground("#fff200");
+	// 	} else if (suhu < 20) {
+	// 		setBackground("#97ff5c");
+	// 	} else {
+	// 		setBackground("#71b4ff");
+	// 	}
+	// }, [suhu]);
 
-	const tambah = () => {
-		if (suhu < 30) {
-			setSuhu(suhu + 1);
-		} else {
-			alert("tidak bisa lebih dari 30");
-		}
-	};
+	// const tambah = () => {
+	// 	if (suhu < 30) {
+	// 		setSuhu(suhu + 1);
+	// 	} else {
+	// 		alert("tidak bisa lebih dari 30");
+	// 	}
+	// };
 
-	const kurang = () => {
-		if (suhu > 16) {
-			setSuhu(suhu - 1);
-		} else {
-			alert("tidak bisa kurang dari 16");
-		}
-	};
+	// const kurang = () => {
+	// 	if (suhu > 16) {
+	// 		setSuhu(suhu - 1);
+	// 	} else {
+	// 		alert("tidak bisa kurang dari 16");
+	// 	}
+	// };
 
 	return (
 		<div
@@ -44,10 +54,16 @@ function MyCounter() {
 			}}
 		>
 			<h1>My Counter</h1>
-			<h1>{suhu}</h1>
-			<button onClick={tambah}>Tambah</button>
+			<h1>{counter}</h1>
+			<Button onClick={increment}>Tambah</Button>
 			<br />
-			<button onClick={kurang}>Kurang</button>
+			<Button onClick={decrement}>Kurang</Button>
+			<br />
+			<Button onClick={reset}>Reset</Button>
+			<br />
+			<Button onClick={() => incrementByAmount(3)}>increase By 3</Button>
+			<br />
+			<Button onClick={() => decrementByAmount(3)}>Decrease By 3</Button>
 		</div>
 	);
 }

@@ -1,6 +1,17 @@
+import { Button } from "@/components/ui/button";
+import { useSuhuCounterStore } from "@/stores/suhu";
 import { NavLink } from "react-router-dom";
 
 function About() {
+	const {
+		counter,
+		increment,
+		decrement,
+		reset,
+		incrementByAmount,
+		decrementByAmount,
+	} = useSuhuCounterStore((state) => state);
+
 	return (
 		<main
 			style={{
@@ -10,7 +21,9 @@ function About() {
 			}}
 		>
 			<p>This is about page</p>
-         <NavLink to="/">Ke Halaman Home</NavLink>
+			<p>Suhu saat ini : {counter}</p>
+			<NavLink to="/">Ke Halaman Home</NavLink>
+			<Button onClick={reset}>Reset</Button>
 		</main>
 	);
 }

@@ -8,7 +8,7 @@ import router from "./routes";
 function App() {
 	return (
 		<AuthProvider>
-			<RouterProvider router={router}/>
+			<RouterProvider router={router} />
 		</AuthProvider>
 	);
 }
